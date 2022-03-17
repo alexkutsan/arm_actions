@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  build:
+  build_using_qus:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,3 +16,15 @@ jobs:
         targets: arm
     - name: Build the Docker arm image
       run: docker build . --file Dockerfile.arm --tag arm-image:$(date +%s)
+
+  build_using_arm-runner-action:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        commands: uname -a
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        commands: docker build . --file Dockerfile
+                

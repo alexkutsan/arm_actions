@@ -14,8 +14,10 @@ RUN apt update && apt-get install -y \
 RUN git clone -b v8.0.6 https://github.com/ivmai/bdwgc.git && \
     cd bdwgc && \
     git clone https://github.com/ivmai/libatomic_ops.git && \
-    autoreconf -vif && \
-    ./configure --enable-static --disable-shared && \
+    /autogen.sh && \
+    ./configure && \
     make -j && \
-    make check
+    make check \ 
+    make install
+
 
