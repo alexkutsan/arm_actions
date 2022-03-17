@@ -1,4 +1,4 @@
-FROM --platform=linux/arm/v7 debian
+FROM debian
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Kiev
