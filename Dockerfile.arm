@@ -1,5 +1,5 @@
 FROM --platform=linux/arm/v7 debian
-
+RUN uname -a 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Kiev
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -17,5 +17,7 @@ RUN git clone -b v8.0.6 https://github.com/ivmai/bdwgc.git && \
     autoreconf -vif && \
     ./configure --enable-static --disable-shared && \
     make -j && \
-    make check
+    make check && \
+    make -j && \
+    make install 
 
