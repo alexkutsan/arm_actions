@@ -24,7 +24,7 @@ jobs:
             docker run alexkutsan/sysbench --test=fileio --file-test-mode=seqwr run
 
   bench_ubuntu:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     
     steps:
 
