@@ -8,14 +8,15 @@ on:
 jobs:
   try_macos:
     runs-on: macos-latest
-
+    container:
+      image: ubuntu
+      
     steps:
     - name: show vars
       run: |
             env 
             ls -la
             pwd
-            docker run hello-world
 
 #   build_using_qus:
 #     runs-on: ubuntu-latest
