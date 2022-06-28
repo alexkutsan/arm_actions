@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  try_macos:
+  bench_macos:
     runs-on: macos-latest
     
     steps:
@@ -19,8 +19,27 @@ jobs:
             env 
             ls -la
             pwd
-            docker run hello-world
+            docker run alexkutsan/sysbench --test=cpu run  
+            docker run alexkutsan/sysbench --test=memory run 
+            docker run alexkutsan/sysbench --test=fileio --file-test-mode=seqwr run
 
+  bench_ubuntu:
+    runs-on: ubuntu
+    
+    steps:
+
+    - uses: docker-practice/actions-setup-docker@master
+     
+    - name: show vars
+      run: |
+            set -x     
+            env 
+            ls -la
+            pwd
+            docker run alexkutsan/sysbench --test=cpu run  
+            docker run alexkutsan/sysbench --test=memory run 
+            docker run alexkutsan/sysbench --test=fileio --file-test-mode=seqwr run
+            
 #   build_using_qus:
 #     runs-on: ubuntu-latest
 
