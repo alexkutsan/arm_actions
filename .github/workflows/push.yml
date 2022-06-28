@@ -8,12 +8,14 @@ on:
 jobs:
   try_macos:
     runs-on: macos-latest
-    container:
-      image: ubuntu
-      
+    
     steps:
+
+    - uses: docker-practice/actions-setup-docker@master
+     
     - name: show vars
       run: |
+            set -x     
             env 
             ls -la
             pwd
