@@ -19,6 +19,7 @@ jobs:
             env 
             ls -la
             pwd
+            docker run hello-world
 
 #   build_using_qus:
 #     runs-on: ubuntu-latest
